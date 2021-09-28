@@ -11,6 +11,40 @@
 let paddHeight = 10
 let paddWidth = 75
 let paddleX = (canvas.width - paddWidth) / 2
+// bricks 
+let brickRowCount = 3;
+let brickColumnCount = 5;
+let brickWidth = 75;
+let brickHeight = 20;
+let brickPadding = 10;
+let brickOffsetTop = 30;
+let brickOffsetLeft = 30;
+// 
+var bricks = [];
+// drawing bricks
+for(let c=0; c<brickColumnCount; c++) {
+  bricks[c] = [];
+  for(let r=0; r<brickRowCount; r++) {
+    bricks[c][r] = {x: 0, y: 0}
+  }
+
+}
+function drawBricks() {
+    for(let c=0; c<brickColumnCount; c++) {
+        for(let r=0; r<brickRowCount; r++) {
+          let brickX = (c*(brickWidth+brickPadding)+brickOffsetLeft)
+          let brickY = (r*(brickHeight+brickPadding)+brickOffsetTop)
+          bricks[c][r].x = brickX;
+          bricks[c][r].y = brickY;
+          ctx.beginPath();
+          ctx.rect(brickX, brickY, brickWidth, brickHeight)
+          ctx.fillStyle = "#0095DD";
+          ctx.fill();
+          ctx.closePath();
+    }
+  }
+}
+console.log(bricks)
 // Обработчик собыйтий на нажатие кнопки
 let rightPressed = false
 let leftPressed = false
@@ -54,6 +88,7 @@ function keyUpHandler(e) {
 // move Arc
  function move() {
    ctx.clearRect(0, 0, canvas.width, canvas.height)
+   drawBricks()
    drawArc()
    drawPaddle()
    // checking walls arc
@@ -83,7 +118,7 @@ function keyUpHandler(e) {
    }
    x+=dx
    y+=dy
- }
+ };
  
- let interval = setInterval(move, 10)
+ let interval = setInterval(move, 10);
 

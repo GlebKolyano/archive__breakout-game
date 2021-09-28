@@ -6,4 +6,4 @@
 
 #screen
 
-![breakout__game](https://user-images.githubusercontent.com/88821881/135114353-fe305fa9-a5f9-418a-8df8-114dd59a7f42.png)
+![breakout__game](https://user-images.githubusercontent.com/88821881/135116658-49bbfe0e-3a47-4983-918d-2c3cb0b7640c.png)

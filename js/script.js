@@ -7,12 +7,6 @@
  ctx.fill();
  ctx.closePath();
 
-ctx.beginPath();
-ctx.arc(240, 160, 20, 0, Math.PI*2, false);
-ctx.fillStyle = "red";
-ctx.fill();
-ctx.closePath();
-
 
 
  ctx.beginPath();
@@ -21,4 +15,27 @@ ctx.closePath();
  ctx.stroke();
  ctx.closePath();
 
+
+
+ let x = canvas.width/2;
+ let y = canvas.height-10;
+
+ let dx = 1;
+ let dy = -1;
+
+ function drawArc() {
+   ctx.beginPath();
+   ctx.arc(x, y, 10, 0, Math.PI*2, false);
+   ctx.fillStyle = "red";
+   ctx.fill();
+   ctx.closePath();
+ }
+
+ function moveArc() {
+   ctx.clearRect(0, 0, canvas.width, canvas.height)
+   drawArc()
+   x+=dx
+   y+=dy
+ }
+ setInterval(moveArc, 10)
 

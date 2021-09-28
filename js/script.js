@@ -11,9 +11,29 @@
 let paddHeight = 10
 let paddWidth = 75
 let paddleX = (canvas.width - paddWidth) / 2
-// key buttons
+// Обработчик собыйтий на нажатие кнопки
 let rightPressed = false
 let leftPressed = false
+
+document.addEventListener('keydown', keyDownHandler, false);
+document.addEventListener('keyup', keyUpHandler, false);
+
+function keyDownHandler(e) {
+  if(e.keyCode === 39) {
+    rightPressed = true;
+  }
+  else if (e.keyCode === 37) {
+    leftPressed = true;
+  }
+};
+function keyUpHandler(e) {
+  if(e.keyCode === 39) {
+    rightPressed = false;
+  }
+  else if(e.keyCode === 37) {
+    leftPressed = false;
+  }
+};
 
 // draw Arc
  function drawArc() {
@@ -32,40 +52,27 @@ let leftPressed = false
    ctx.closePath();
  };
 // move Arc
- function moveArc() {
+ function move() {
    ctx.clearRect(0, 0, canvas.width, canvas.height)
    drawArc()
    drawPaddle()
+   // checking walls arc
    if (y + dy < 0 + ballRadius || y + dy > canvas.height - ballRadius) {
      dy=-dy
    }
    if (x + dx < 0 + ballRadius || x + dx > canvas.width - ballRadius) {
      dx=-dx
    }
+   // checking walls paddle
+   if (rightPressed && paddleX < canvas.width - paddWidth) {
+    paddleX+=7
+   }
+   else if (leftPressed && paddleX > 0) {
+    paddleX-=7
+   }
    x+=dx
    y+=dy
  }
-// key Event Listener 
-document.addEventListener('keydown', keyDownHandler(), false)
-document.addEventListener('keyup', keyUpHandler(), false)
-
-function keyDownHandler(e) {
-  if(e.keyCode === 39) {
-    rightPressed = true;
-  }
-  else if (e.keyCode === 37) {
-    leftPressed = true;
-  }
-}
-function keyUpHandler(e) {
-  if(e.keyCode === 39) {
-    rightPressed = false;
-  }
-  else if(e.keyCode === 37) {
-    leftPressed = false;
-  }
-}
-
  
- setInterval(moveArc, 10)
+ setInterval(move, 10)
 

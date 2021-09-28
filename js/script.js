@@ -104,6 +104,7 @@ function collisionDetection() {
           if(score== brickColumnCount*brickRowCount) {
             alert('YOU WIN!')
             document.location.reload()
+            clearInterval(interval)
             
           }
         }
@@ -123,7 +124,7 @@ function drawScore() {
  function drawArc() {
    ctx.beginPath();
    ctx.arc(x, y, ballRadius, 0, Math.PI*2, false);
-   ctx.fillStyle = "red";
+   ctx.fillStyle = "rgba(143, 62, 62, 1)";
    ctx.fill();
    ctx.closePath();
  }
@@ -132,7 +133,7 @@ function drawScore() {
  function drawPaddle() {
    ctx.beginPath()
    ctx.rect(paddleX, canvas.height-paddHeight, paddWidth, paddHeight)
-   ctx.fillStyle = "blue"
+   ctx.fillStyle = "rgba(62, 77, 143, 1)"
    ctx.fill()
    ctx.closePath();
  };

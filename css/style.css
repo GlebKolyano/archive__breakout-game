@@ -452,6 +452,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -465,8 +469,22 @@ canvas {
   display: block;
   background-color: #272727;
   border: 5px solid #181818;
-  -webkit-box-shadow: 0 0 15px 2px #00ccff;
-          box-shadow: 0 0 15px 2px #00ccff;
+  -webkit-box-shadow: 0 0 15px 2px rgba(0, 204, 255, 0.295);
+          box-shadow: 0 0 15px 2px rgba(0, 204, 255, 0.295);
   color: rgba(143, 62, 62, 0.616);
   color: rgba(62, 77, 143, 0.616);
+}
+
+.inst {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.inst > p {
+  font-size: 24px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: rgba(255, 255, 255, 0.151);
+  font-weight: 300;
 }

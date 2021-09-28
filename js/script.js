@@ -1,31 +1,19 @@
  const canvas = document.getElementById("canvas");
  const ctx = canvas.getContext("2d");
 
- ctx.beginPath();
- ctx.rect(50, 50, 55, 55);
- ctx.fillStyle = "#F0000";
- ctx.fill();
- ctx.closePath();
-
-
-
- ctx.beginPath();
- ctx.rect(200, 10, 100, 40);
- ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
- ctx.stroke();
- ctx.closePath();
-
-
-
  let x = canvas.width/2;
  let y = canvas.height-10;
-
  let dx = 1;
  let dy = -1;
 
+ let ballRadius = 10
+
+
+
+
  function drawArc() {
    ctx.beginPath();
-   ctx.arc(x, y, 10, 0, Math.PI*2, false);
+   ctx.arc(x, y, ballRadius, 0, Math.PI*2, false);
    ctx.fillStyle = "red";
    ctx.fill();
    ctx.closePath();
@@ -34,6 +22,12 @@
  function moveArc() {
    ctx.clearRect(0, 0, canvas.width, canvas.height)
    drawArc()
+   if (y + dy < 0 + ballRadius || y + dy > canvas.height - ballRadius) {
+     dy=-dy
+   }
+   if (x + dx < 0 + ballRadius || x + dx > canvas.width - ballRadius) {
+     dx=-dx
+   }
    x+=dx
    y+=dy
  }

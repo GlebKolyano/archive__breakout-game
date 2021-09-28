@@ -57,12 +57,23 @@ function keyUpHandler(e) {
    drawArc()
    drawPaddle()
    // checking walls arc
-   if (y + dy < 0 + ballRadius || y + dy > canvas.height - ballRadius) {
-     dy=-dy
-   }
+   if(y + dy < ballRadius) {
+        dy = -dy;
+    }
+    else if(y + dy > canvas.height-ballRadius) {
+        if(x > paddleX && x < paddleX + paddWidth) {
+            dy = -dy;
+        }
+        else {
+            alert("GAME OVER");
+            document.location.reload();
+            clearInterval(interval); 
+        }
+    }
    if (x + dx < 0 + ballRadius || x + dx > canvas.width - ballRadius) {
      dx=-dx
    }
+
    // checking walls paddle
    if (rightPressed && paddleX < canvas.width - paddWidth) {
     paddleX+=7
@@ -74,5 +85,5 @@ function keyUpHandler(e) {
    y+=dy
  }
  
- setInterval(move, 10)
+ let interval = setInterval(move, 10)
 

@@ -60,6 +60,10 @@ let leftPressed = false
 
 document.addEventListener('keydown', keyDownHandler, false);
 document.addEventListener('keyup', keyUpHandler, false);
+// mouse //
+document.addEventListener("mousemove", mouseMoveHandler, false);
+
+
 
 function keyDownHandler(e) {
   if(e.keyCode === 39) {
@@ -78,7 +82,12 @@ function keyUpHandler(e) {
   }
 };
 
-
+function mouseMoveHandler(e) {
+    let relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddWidth/2;
+    }
+}
 
 
 // collision detecter //
